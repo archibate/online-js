@@ -1,0 +1,48 @@
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+		<style>
+body {
+	background-color: #333; padding: 40px;
+}
+#code, #preview {
+	float: left;
+	width: 500px;
+	height: 500px;
+	background-color: #fff;
+}
+#code {
+	background-color: #ddd;
+}
+#run_btn {
+	background-color: #111;
+	color: #aaa;
+}
+		</style>
+	</head>
+	<body>
+		<textarea id="code"></textarea>
+		<div id="preview"></div>
+		<button id="run_btn">RUN</button>
+	</body>
+</html>
+
+<script>
+function evaluate() {
+	var preview = $('#preview');
+	preview.html('');
+	var print = function(x) {
+		preview.html(preview.html() + x);
+	};
+	var say = function(x) {
+		preview.html(preview.html() + x + '<br/>');
+	};
+
+	eval(function() {
+		return $('#code').val();
+	}());
+}
+
+$('#run_btn').click(evaluate);
+</script>
