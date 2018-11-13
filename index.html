@@ -5,33 +5,33 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
 		<title></title>
 		<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
-		<style>
-body {
-	background-color: #333; padding: 40px;
-}
-#code, #preview {
-	float: left;
-	width: 500px;
-	height: 500px;
-	background-color: #fff;
-}
-#code {
-	background-color: #ddd;
-}
-#run_btn {
-	background-color: #111;
-	color: #aaa;
-}
-		</style>
+		<link href="https://cdn.bootcss.com/mdui/0.4.1/css/mdui.min.css" rel="stylesheet">
 	</head>
-	<body>
-		<textarea id="code"></textarea>
-		<div id="preview"></div>
-		<button id="run_btn">RUN</button>
+	<body class="mdui-theme-primary-indigo mdui-theme-accent-pink">
+		<div class="mdui-container">
+			<p id="refer-wider"></p>
+			<div class="mdui-textfield">
+				<textarea id="code" class="mdui-textfield-input" rows="7" placeholder="Type your code here"></textarea>
+			</div>
+			<button id="run_btn" class="mdui-btn mdui-btn-block mdui-color-theme-accent mdui-ripple">RUN</button>
+			<br/>
+			<div class="mdui-divider"></div>
+			<div id="preview" style="height: 200px"></div>
+			<div class="mdui-divider"></div>
+		</div>
+		</div>
 	</body>
 </html>
 
 <script>
+var size = Math.min(document.body.clientHeight,
+		    document.getElementById('refer-wider').clientWidth);
+console.log(size);
+$('#code').attr('width', size);
+$('#code').attr('height', size);
+$('#preview').attr('width', size);
+$('#preview').attr('height', size);
+
 function evaluate() {
 	var preview = $('#preview');
 	preview.html('');
